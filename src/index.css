@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.App {
+  text-align: center;
+  padding: 0;
+}
+
+.App-logo {
+  /* animation: App-logo-spin infinite 20s linear; */
+  height: 80px;
+  padding: 10px;
+}
+
+.App-header {
+  display: grid;
+  grid-template-columns: 100px 300px 300px;
+  background-color: #111;
+  /* height: 100px; */
+  padding: 0px;
+  color: white;
+}
+
+.App-title {
+  font-size: 4em;
+  padding: 10px;
+}
+.App-title-description {
+  padding-top: 50px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app__main {
+  display: grid;
+  padding: 20px;
+  grid-row-gap: 25px;
+  grid-column-gap: 25px;
+  grid-template-columns: auto auto auto auto;
+  grid-auto-rows: 100px;
+  grid-auto-columns: 100px;
+}
+
+.app__main__court__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+  text-align: center;
+  color: black;
+  font-size: 50px;
+  font-weight: bold;
+  box-shadow: 0px -2px 20px #aaa, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
+  text-shadow: 0px 1px 0px #444;
+  border-radius: 25px;
+  border: 1px solid #aaa;
+}
+
+.current {
+  background-color: #80f711;
+  color: white;
+}
+
+.on-hold {
+  background-color: orangered;
+  color: white;
+}
+
+.finished {
+  background-color: #888;
+}
+
+.App-footer {
+  display: flex;
+  background-color: black;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 5px;
+}
+.App-footer__time {
+  color: white;
+  padding-right: 15px;
+}
