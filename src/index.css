@@ -17,7 +17,7 @@ body {
 
 .App-header {
   display: grid;
-  grid-template-columns: 100px 300px 300px;
+  grid-template-columns: auto auto auto;
   background-color: #111;
   /* height: 100px; */
   padding: 0px;
@@ -84,10 +84,14 @@ body {
   display: flex;
   background-color: black;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 5px;
 }
 .App-footer__time {
   color: white;
   padding-right: 15px;
+}
+
+.App-footer__copyright {
+  color: white;
 }
