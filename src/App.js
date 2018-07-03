@@ -11,31 +11,30 @@ class App extends Component {
       buttons: []
     };
   }
-  // todo να βρείς πώς στέλνεις το index του κουμπιού που πατήθηεκα ωστε να καταχωρήσεις το toggle του στον πινακα
-  toggleButtonState = event => {
-    console.log(event.currentTarget.button_id);
-  };
 
+  toggleButtonState = event => {
+    console.log(event.target.getAttribute("button_id"));
+  };
+  // todo να δημιουργούνται αυτόματα τα κουμπιά από έναν πίνακα που θα υπάρχει στην state
+  // todo όταν κάνεις κλίκ να υπάρχει function η οποία θα κάνει toggle στον state πινακα
+  // todo μετά να αποθηκεύεται κάπου αυτή η state (σε έναν server ο οποίος με API θα ρωτάται.
+  //  Το θέμα είναι πώς γίνεται αυτόματα update όταν αλλάξει κάτι στον server. Γινόμαστε κάπου subscribe?)
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <div className="App-title">Supreme</div>
           <div className="App-title-description">Ενημέρωση εξέλιξης πινακίου</div>
-        </header>
+        </header> */}
         <main className="app__main">
-          <div
-            className="app__main__court__button finished"
-            button_id={1}
-            onClick={button_id => this.toggleButtonState(button_id)}
-          >
+          <div className="app__main__court__button finished" button_id={1} onClick={this.toggleButtonState}>
             1
           </div>
-          <div className="app__main__court__button finished" value={2} onClick={this.toggleButtonState}>
+          <div className="app__main__court__button finished" button_id={2} onClick={this.toggleButtonState}>
             2
           </div>
-          <div className="app__main__court__button finished" value={3} onClick={this.toggleButtonState}>
+          <div className="app__main__court__button finished" button_id={3} onClick={this.toggleButtonState}>
             3
           </div>
           <div className="app__main__court__button on-hold">4</div>
