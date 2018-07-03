@@ -5,61 +5,188 @@ import "./App.css";
 class App extends Component {
   constructor() {
     super();
+    let courtCases0 = [
+      {
+        caseID: 1,
+        caseState: "finished"
+      },
+      {
+        caseID: 2,
+        caseState: "finished"
+      },
+      {
+        caseID: 3,
+        caseState: "finished"
+      },
+      {
+        caseID: 4,
+        caseState: "finished"
+      },
+      {
+        caseID: 5,
+        caseState: "onHold"
+      },
+      {
+        caseID: 6,
+        caseState: "finished"
+      },
+      {
+        caseID: 7,
+        caseState: "running"
+      },
+      {
+        caseID: 8,
+        caseState: "default"
+      },
+      {
+        caseID: 9,
+        caseState: "default"
+      },
+      {
+        caseID: 10,
+        caseState: "default"
+      },
+      {
+        caseID: 11,
+        caseState: "finished"
+      },
+      {
+        caseID: 12,
+        caseState: "default"
+      },
+      {
+        caseID: 13,
+        caseState: "default"
+      },
+      {
+        caseID: 14,
+        caseState: "default"
+      },
+      {
+        caseID: 15,
+        caseState: "default"
+      },
+      {
+        caseID: 16,
+        caseState: "default"
+      },
+      {
+        caseID: 17,
+        caseState: "default"
+      },
+      {
+        caseID: 18,
+        caseState: "default"
+      },
+      {
+        caseID: 19,
+        caseState: "default"
+      },
+      {
+        caseID: 20,
+        caseState: "default"
+      },
+      {
+        caseID: 21,
+        caseState: "default"
+      },
+      {
+        caseID: 22,
+        caseState: "default"
+      },
+      {
+        caseID: 23,
+        caseState: "default"
+      },
+      {
+        caseID: 24,
+        caseState: "default"
+      },
+      {
+        caseID: 25,
+        caseState: "default"
+      },
+      {
+        caseID: 26,
+        caseState: "default"
+      },
+      {
+        caseID: 27,
+        caseState: "default"
+      }
+    ];
+
+    let court0 = { title: "εφετείο", date: "12.12.2018", courtCases: courtCases0 };
 
     this.state = {
-      court_name: "default court",
-      buttons: []
+      court: court0
     };
   }
 
   toggleButtonState = event => {
-    console.log(event.target.getAttribute("button_id"));
+    console.info("pressed button with id:" + event.target.getAttribute("caseid"));
+    let caseIDString = event.target.getAttribute("caseid");
+    let caseID = parseInt(caseIDString, 10);
+    console.info("caseID number:" + caseID);
+    let theCourt = this.state.court;
+    let oldCaseState = theCourt.courtCases[caseID - 1].caseState;
+    console.info("oldCaseState:" + oldCaseState);
+    let newCaseState = "default";
+
+    switch (oldCaseState) {
+      case "running":
+        newCaseState = "onHold";
+        break;
+      case "onHold":
+        newCaseState = "finished";
+        break;
+      case "finished":
+        newCaseState = "default";
+        break;
+      default:
+        newCaseState = "running";
+    }
+
+    theCourt.courtCases[caseID - 1].caseState = newCaseState;
+    console.info("newCaseState:" + newCaseState);
+    this.setState({ court: theCourt });
   };
-  // todo να δημιουργούνται αυτόματα τα κουμπιά από έναν πίνακα που θα υπάρχει στην state
-  // todo όταν κάνεις κλίκ να υπάρχει function η οποία θα κάνει toggle στον state πινακα
+
+  getButtonCSSBasedOnCourtState = state => {
+    switch (state) {
+      case "onHold":
+        return "app__main__court__button onHold";
+      case "finished":
+        return "app__main__court__button finished";
+      case "running":
+        return "app__main__court__button running";
+      default:
+        return "app__main__court__button";
+    }
+  };
   // todo μετά να αποθηκεύεται κάπου αυτή η state (σε έναν server ο οποίος με API θα ρωτάται.
   //  Το θέμα είναι πώς γίνεται αυτόματα update όταν αλλάξει κάτι στον server. Γινόμαστε κάπου subscribe?)
   render() {
     return (
       <div className="App">
-        {/* <header className="App-header">
+        <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <div className="App-title">Supreme</div>
           <div className="App-title-description">Ενημέρωση εξέλιξης πινακίου</div>
-        </header> */}
+        </header>
         <main className="app__main">
-          <div className="app__main__court__button finished" button_id={1} onClick={this.toggleButtonState}>
-            1
-          </div>
-          <div className="app__main__court__button finished" button_id={2} onClick={this.toggleButtonState}>
-            2
-          </div>
-          <div className="app__main__court__button finished" button_id={3} onClick={this.toggleButtonState}>
-            3
-          </div>
-          <div className="app__main__court__button on-hold">4</div>
-          <div className="app__main__court__button finished">5</div>
-          <div className="app__main__court__button on-hold">6</div>
-          <div className="app__main__court__button finished">7</div>
-          <div className="app__main__court__button finished">8</div>
-          <div className="app__main__court__button finished">9</div>
-          <div className="app__main__court__button current">10</div>
-          <div className="app__main__court__button">11</div>
-          <div className="app__main__court__button">12</div>
-          <div className="app__main__court__button">13</div>
-          <div className="app__main__court__button">14</div>
-          <div className="app__main__court__button">15</div>
-          <div className="app__main__court__button">16</div>
-          <div className="app__main__court__button">17</div>
-          <div className="app__main__court__button">18</div>
-          <div className="app__main__court__button finished">19</div>
-          <div className="app__main__court__button">20</div>
-          <div className="app__main__court__button finished">21</div>
-          <div className="app__main__court__button">22</div>
-          <div className="app__main__court__button">23</div>
-          <div className="app__main__court__button">24</div>
-          <div className="app__main__court__button">25</div>
-          <div className="app__main__court__button">26</div>
+          {this.state.court.courtCases.map(aCourtCase => {
+            return (
+              <div
+                className={this.getButtonCSSBasedOnCourtState(aCourtCase.caseState)}
+                key={aCourtCase.caseID}
+                caseid={aCourtCase.caseID}
+                onClick={this.toggleButtonState}
+              >
+                {aCourtCase.caseID}
+              </div>
+            );
+          })}
         </main>
         <footer className="App-footer">
           <div className="App-footer__copyright">Δικηγορικός Σύλλογος Κομοτηνής</div>
