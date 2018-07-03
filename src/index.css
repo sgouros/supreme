@@ -22,15 +22,17 @@ body {
 }
 
 .App-logo {
-  /* animation: App-logo-spin infinite 20s linear; */
+  animation: App-logo-spin infinite 20s linear;
   height: 80px;
   padding: 10px;
 }
 
 .App-header {
   display: grid;
-  grid-template-columns: auto auto auto;
-  background-color: #111;
+  grid-template-columns: auto auto auto 1fr;
+  justify-items: end;
+  align-items: start;
+  background-color: #000;
   /* height: 100px; */
   padding: 0px;
   color: white;
@@ -38,22 +40,27 @@ body {
 
 .App-title {
   font-size: 4em;
-  padding: 10px;
+  padding-top: 15px;
+  padding-right: 20px;
 }
 .App-title-description {
-  padding-top: 50px;
+  padding-top: 56px;
 }
 
 @keyframes App-logo-spin {
   from {
-    transform: rotate(0deg);
+    transform: rotateY(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotateY(360deg);
   }
 }
-
-.app__main {
+.app__main__courtDescription {
+  padding: 5px;
+  font-weight: bold;
+  text-align: left;
+}
+.app__main__matrix {
   display: grid;
   padding: 20px;
   grid-row-gap: 25px;

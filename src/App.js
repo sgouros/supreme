@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "./logo.jpg";
+import logo from "./logo.jpeg";
 import "./App.css";
 
 class App extends Component {
@@ -164,29 +164,32 @@ class App extends Component {
         return "app__main__court__button";
     }
   };
-  // todo μετά να αποθηκεύεται κάπου αυτή η state (σε έναν server ο οποίος με API θα ρωτάται.
-  //  Το θέμα είναι πώς γίνεται αυτόματα update όταν αλλάξει κάτι στον server. Γινόμαστε κάπου subscribe?)
+  // todo μετά να αποθηκεύεται κάπου αυτή η state (σε έναν server ο οποίος με API θα ρωτάται)
+  // το θέμα είναι πώς γίνεται αυτόματα update όταν αλλάξει κάτι στον server. Γινόμαστε κάπου subscribe?)
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <div className="App-title">Supreme</div>
-          <div className="App-title-description">Ενημέρωση εξέλιξης πινακίου</div>
+          <div className="App-title-description">εφαρμογή ηλεκτρονικής ενημέρωσης δικαστικού πινακίου</div>
         </header>
         <main className="app__main">
-          {this.state.court.courtCases.map(aCourtCase => {
-            return (
-              <div
-                className={this.getButtonCSSBasedOnCourtState(aCourtCase.caseState)}
-                key={aCourtCase.caseID}
-                caseid={aCourtCase.caseID}
-                onClick={this.toggleButtonState}
-              >
-                {aCourtCase.caseID}
-              </div>
-            );
-          })}
+          <div className="app__main__courtDescription">Τριμελές Πλημμελειοδικείο - Πινάκιο της 12ης Ιουλίου 2018.</div>
+          <div className="app__main__matrix">
+            {this.state.court.courtCases.map(aCourtCase => {
+              return (
+                <div
+                  className={this.getButtonCSSBasedOnCourtState(aCourtCase.caseState)}
+                  key={aCourtCase.caseID}
+                  caseid={aCourtCase.caseID}
+                  onClick={this.toggleButtonState}
+                >
+                  {aCourtCase.caseID}
+                </div>
+              );
+            })}
+          </div>
         </main>
         <footer className="App-footer">
           <div className="App-footer__copyright">Δικηγορικός Σύλλογος Κομοτηνής</div>
